@@ -4,11 +4,16 @@ out whether there is a route from S to E.
 */
 
 var Graph = require('./utils/Graph');
+var Queue = require('./utils/Queue')
 // methods: addEdge(node, edge), addNode(value), findEdges(node), 
 // hasEdge(node, edge), hasNode(node), removeEdge(node, edge), removeNode(node)
 
 let checkRoute = (value1, value2, graph) => {
+    let visited = new Queue 
+    let explored = new Queue 
+
     
+
 }
 
 

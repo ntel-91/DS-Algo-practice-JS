@@ -64,5 +64,4 @@ var Graph = function() {
 // methods: addEdge(node, edge), addNode(value), findEdges(node), 
 // hasEdge(node, edge), hasNode(node), removeEdge(node, edge), removeNode(node)
 
-  module.exports = Graph;
-// export default Graph
+module.exports = Graph;
