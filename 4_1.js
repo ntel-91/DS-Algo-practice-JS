@@ -9,30 +9,43 @@ var Queue = require('./utils/Queue')
 // hasEdge(node, edge), hasNode(node), removeEdge(node, edge), removeNode(node)
 
 let checkRoute = (value1, value2, graph) => {
-    let visited = new Queue 
-    let explored = new Queue 
+    let visited = new Queue
+    let explored = {}
+    let visiting = null
 
+    visited.enqueue(value1)
+    // console.log(visited.isEmpty())
+    // visited.dequeue()
+    // console.log(visited.isEmpty())
+
+    console.log(!visited.isEmpty())
+    // visiting = visited.dequeue()
+    // console.log(visiting)
+    // console.log(!visited.isEmpty())
     
+    
+    while (!visited.isEmpty()) {
+        
+        visiting = visited.dequeue
+        console.log(visiting)
+    }
+    
+
+
 
 }
 
-
-
-
-var graph = new Graph();
+var graph = new Graph;
 graph.addNode('A');
 graph.addNode('B');
 graph.addNode('C');
 graph.addNode('D');
-graph.addNode('E');
-graph.addNode('F');
 
 graph.addEdge('A', 'B');
 graph.addEdge('A', 'C');
 graph.addEdge('B', 'D');
-graph.addEdge('E', 'F');
 
-
+console.log(checkRoute('A', 'D', graph))
 // console.log(checkRoute('A', 'C', graph), true);
 // console.log(checkRoute('A', 'E', graph), false);
 // console.log(checkRoute('B', 'A', graph), true);
