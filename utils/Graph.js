@@ -15,26 +15,32 @@ class Graph {
     }
 
     findEdges = (node) => {
-        return this.nodes[node]
+        let adjNodes = this.nodes[node]
+        return Object.keys(adjNodes)
     }
 
 
 }
 
+module.exports = Graph
 
 let graph = new Graph 
 
 graph.addNode('A')
 graph.addNode('B')
 graph.addNode('C')
+graph.addNode('D')
+graph.addNode('E')
+graph.addNode('F')
 
 graph.addEdge('A', 'C')
-
 graph.addEdge('A', 'B')
+graph.addEdge('B', 'D')
+graph.addEdge('C', 'E')
+graph.addEdge('C', 'F')
 
 
 
-// console.log(graph.nodes['A'])
 
 
 

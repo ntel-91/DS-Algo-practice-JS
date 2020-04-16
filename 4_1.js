@@ -3,8 +3,8 @@ Given a directed graph and two nodes (S and E), design an algorithm to find
 out whether there is a route from S to E.
 */
 
-var Graph = require('./utils/Graph');
-var Queue = require('./utils/Queue')
+let Graph = require('./utils/Graph');
+let Queue = require('./utils/Queue')
 // methods: addEdge(node, edge), addNode(value), findEdges(node), 
 // hasEdge(node, edge), hasNode(node), removeEdge(node, edge), removeNode(node)
 
@@ -14,39 +14,46 @@ let checkRoute = (value1, value2, graph) => {
     let visiting = null
 
     visited.enqueue(value1)
-    // console.log(visited.isEmpty())
-    // visited.dequeue()
-    // console.log(visited.isEmpty())
-
-    console.log(!visited.isEmpty())
-    // visiting = visited.dequeue()
-    // console.log(visiting)
-    // console.log(!visited.isEmpty())
-    
     
     while (!visited.isEmpty()) {
+
+        // remove from visited
+        visiting = visited.dequeue()
+
+        if (visiting === value2) {
+            return true
+        }
+        // find adjacent edges and add to visited
+        let toVisit = graph.findEdges(visiting)
+        toVisit.forEach(n => visited.enqueue(n))
         
-        visiting = visited.dequeue
-        console.log(visiting)
     }
-    
 
-
-
+    return false
 }
 
-var graph = new Graph;
-graph.addNode('A');
-graph.addNode('B');
-graph.addNode('C');
-graph.addNode('D');
+let graph = new Graph 
 
-graph.addEdge('A', 'B');
-graph.addEdge('A', 'C');
-graph.addEdge('B', 'D');
+graph.addNode('A')
+graph.addNode('B')
+graph.addNode('C')
+graph.addNode('D')
+graph.addNode('E')
+graph.addNode('F')
 
-console.log(checkRoute('A', 'D', graph))
-// console.log(checkRoute('A', 'C', graph), true);
-// console.log(checkRoute('A', 'E', graph), false);
-// console.log(checkRoute('B', 'A', graph), true);
-// console.log(checkRoute('D', 'E', graph), true);
+graph.addNode('G')
+graph.addNode('H')
+
+graph.addEdge('A', 'B')
+graph.addEdge('A', 'C')
+graph.addEdge('B', 'D')
+graph.addEdge('C', 'E')
+graph.addEdge('C', 'F')
+
+graph.addEdge('G', 'H')
+
+console.log(checkRoute('A', 'D', graph), true);
+console.log(checkRoute('A', 'G', graph), false);
+console.log(checkRoute('A', 'E', graph), true);
+console.log(checkRoute('C', 'E', graph), true);
+console.log(checkRoute('B', 'F', graph), false);
